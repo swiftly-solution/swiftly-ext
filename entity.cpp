@@ -13,7 +13,7 @@ CGameEntitySystem* ext = nullptr;
 CGameEntitySystem* GameEntitySystem()
 {
     if(!ext) {
-        void* m_hModule;
+        HINSTANCE m_hModule;
         #ifdef _WIN32
             m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
         #else
