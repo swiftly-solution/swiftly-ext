@@ -1,5 +1,7 @@
 #include "extension.h"
 
+#include <metamod_oslink.h>
+
 #ifndef _WIN32
 #include <dlfcn.h>
 #endif
