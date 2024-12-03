@@ -5,17 +5,15 @@
 
 #if !defined EXT_API
 #if defined __WIN32__ || defined _WIN32 || defined WIN32
-	#define EXT_API extern __declspec(dllexport)
+	#define EXT_API extern "C" __declspec(dllexport)
 #elif defined __GNUC__
-	#define EXT_API extern __attribute__ ((visibility("default")))	
+	#define EXT_API extern "C" __attribute__ ((visibility("default")))	
 #endif
 #endif
 
-class SwiftlyExt;
-
-EXT_API SwiftlyExt* GetExtensionClass();
+EXT_API void* GetExtensionClass();
 
 #define EXT_EXPOSE(var)	\
-	EXT_API SwiftlyExt* GetExtensionClass() { return reinterpret_cast<SwiftlyExt*>(&var); }
+	EXT_API void* GetExtensionClass() { return reinterpret_cast<void*>(&var); }
 
 #endif
