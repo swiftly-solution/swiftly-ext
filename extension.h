@@ -5,16 +5,20 @@
 #include <string>
 #include <entity2/entitysystem.h>
 #include "core.h"
+#include "pluginkind.h"
 
 EXT_API void* swiftly_GameEntitySystem();
 
 class SwiftlyExt
 {
 public:
-    virtual bool Load(std::string& error, SourceHook::ISourceHook *SHPtr, ISmmAPI* ismm, bool late) = 0;
+    virtual bool Load(std::string& error, SourceHook::ISourceHook* SHPtr, ISmmAPI* ismm, bool late) = 0;
     virtual bool Unload(std::string& error) = 0;
     virtual void AllExtensionsLoaded() = 0;
     virtual void AllPluginsLoaded() = 0;
+
+    virtual bool OnPluginLoad(void* pluginState, PluginKind_t kind, std::string& error) = 0;
+    virtual bool OnPluginUnload(void* pluginState, PluginKind_t kind, std::string& error) = 0;
 
     virtual const char* GetAuthor() = 0;
     virtual const char* GetName() = 0;
