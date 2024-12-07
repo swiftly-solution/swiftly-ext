@@ -17,8 +17,8 @@ public:
     virtual void AllExtensionsLoaded() = 0;
     virtual void AllPluginsLoaded() = 0;
 
-    virtual bool OnPluginLoad(void* pluginState, PluginKind_t kind, std::string& error) = 0;
-    virtual bool OnPluginUnload(void* pluginState, PluginKind_t kind, std::string& error) = 0;
+    virtual bool OnPluginLoad(std::string pluginName, void* pluginState, PluginKind_t kind, std::string& error) = 0;
+    virtual bool OnPluginUnload(std::string pluginName, void* pluginState, PluginKind_t kind, std::string& error) = 0;
 
     virtual const char* GetAuthor() = 0;
     virtual const char* GetName() = 0;
