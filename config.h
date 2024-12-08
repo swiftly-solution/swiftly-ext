@@ -1,10 +1,10 @@
+#include <any>
+
 #include <metamod_oslink.h>
 
 #ifndef _WIN32
 #include <dlfcn.h>
 #endif
-
-#include <any>
 
 typedef void* (*GetConfigVal)(const char*);
 
