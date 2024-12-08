@@ -1,3 +1,6 @@
+#ifndef _sdk_h
+#define _sdk_h
+
 #include <metamod_oslink.h>
 
 #ifndef _WIN32
@@ -107,3 +110,5 @@ void SDKSetStateChanged(void* ptr, const char* className, const char* fieldName,
 
     reinterpret_cast<StateChanged>(statePtr)(ptr, className, fieldName, extraOffset);
 }
+
+#endif

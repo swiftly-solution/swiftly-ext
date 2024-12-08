@@ -1,3 +1,6 @@
+#ifndef _memory_h
+#define _memory_h
+
 #include <metamod_oslink.h>
 
 #ifndef _WIN32
@@ -74,3 +77,5 @@ void* AccessVTable(const char* module, const char* vTableName)
 
     return reinterpret_cast<AccVTable>(vtablePtr)(module, vTableName);
 }
+
+#endif

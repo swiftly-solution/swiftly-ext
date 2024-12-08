@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _eventresult_h
+#define _eventresult_h
 
 enum class EventResult
 {
@@ -9,3 +10,5 @@ enum class EventResult
     // Stops processing the event but calls the code followed by it.
     Handled = 2,
 };
+
+#endif
