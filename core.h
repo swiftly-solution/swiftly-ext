@@ -1,6 +1,8 @@
 #ifndef _swiftly_ext_core_h
 #define _swiftly_ext_core_h
 
+#include <ISmmPlugin.h>
+
 #define MAX_PLAYERS 64
 
 #if !defined EXT_API
