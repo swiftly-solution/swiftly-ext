@@ -1,6 +1,7 @@
 #include "NativeHooks.h"
 
 CUtlVector<FuncHookBase *> g_funcHooks;
+CUtlVector<FuncHookBase *> g_vecHooks;
 
 bool InitializeHooks()
 {
