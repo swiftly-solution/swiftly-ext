@@ -22,7 +22,10 @@ CGameEntitySystem* GameEntitySystem()
         #endif
 
         void* fnGetClass = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GameEntitySystem"));
-        if(!fnGetClass) return nullptr;
+        if(!fnGetClass) {
+            dlclose(m_hModule);
+            return nullptr;
+        }
 
         ext = (CGameEntitySystem*)(reinterpret_cast<GetGES>(fnGetClass)());
 
