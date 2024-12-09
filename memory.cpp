@@ -1,5 +1,4 @@
 #include "memory.h"
-#include <stdio.h>
 
 typedef int (*GetOff)(const char*);
 typedef void* (*GetSig)(const char*);
