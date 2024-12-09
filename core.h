@@ -24,10 +24,12 @@ EXT_API void* GetExtensionClass();
 
 #define DECLARE_GLOBALVARS() \
 	extern SourceHook::ISourceHook *g_SHPtr; \
-	extern ISmmAPI* g_SMAPI
+	extern ISmmAPI* g_SMAPI; \
+	extern PluginId g_PLID
 
 #define CREATE_GLOBALVARS() \
 	SourceHook::ISourceHook *g_SHPtr = nullptr; \
-	ISmmAPI* g_SMAPI = nullptr
+	ISmmAPI* g_SMAPI = nullptr; \
+	PluginId g_PLID = 0;
 
 #endif
