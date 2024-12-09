@@ -19,10 +19,10 @@ T FetchConfigValue(const char* key)
             m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
         #else
             m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
-            if(!m_hModule) return nullptr;
+            if(!m_hModule) return (T)0;
         #endif
 
-        void* getConfValuePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetConfigurationValue"));
+        getConfValuePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetConfigurationValue"));
         if(!getConfValuePtr) {
             dlclose(m_hModule);
             return (T)0;

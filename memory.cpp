@@ -1,4 +1,5 @@
 #include "memory.h"
+#include <stdio.h>
 
 typedef int (*GetOff)(const char*);
 typedef void* (*GetSig)(const char*);
@@ -19,11 +20,13 @@ int GetOffset(const char* name)
             if(!m_hModule) return -1;
         #endif
 
-        void* offsetPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetOffset"));
+        offsetPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetOffset"));
         if(!offsetPtr) {
             dlclose(m_hModule);
             return -1;
         }
+
+        dlclose(m_hModule);
     }
     
     return reinterpret_cast<GetOff>(offsetPtr)(name);
@@ -40,11 +43,13 @@ void* GetSignature(const char* name)
             if(!m_hModule) return nullptr;
         #endif
 
-        void* sigPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSignature"));
+        sigPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSignature"));
         if(!sigPtr) {
             dlclose(m_hModule);
             return nullptr;
         }
+
+        dlclose(m_hModule);
     }
 
     return reinterpret_cast<GetSig>(sigPtr)(name);
@@ -61,11 +66,13 @@ void* AccessVTable(const char* module, const char* vTableName)
             if(!m_hModule) return nullptr;
         #endif
 
-        void* vtablePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_AccessVTable"));
+        vtablePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_AccessVTable"));
         if(!vtablePtr) {
             dlclose(m_hModule);
             return nullptr;
         }
+
+        dlclose(m_hModule);
     }
 
     return reinterpret_cast<AccVTable>(vtablePtr)(module, vTableName);

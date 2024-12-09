@@ -22,7 +22,7 @@ T SDKGetProp(void* ptr, const char* className, const char* fieldName)
             if(!m_hModule) return (T)0;
         #endif
 
-        void* funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
+        funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
         if(!funcPtr) {
             dlclose(m_hModule);
             return (T)0;
@@ -45,7 +45,7 @@ T* SDKGetPropPtr(void* ptr, const char* className, const char* fieldName)
             if(!m_hModule) return nullptr;
         #endif
 
-        void* funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
+        funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
         if(!funcPtr) {
             dlclose(m_hModule);
             return nullptr;
@@ -70,7 +70,7 @@ void SDKSetProp(void* ptr, const char* className, const char* fieldName, T value
             if(!m_hModule) return;
         #endif
 
-        void* funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
+        funcPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetSDKPtr"));
         if(!funcPtr) {
             dlclose(m_hModule);
             return;

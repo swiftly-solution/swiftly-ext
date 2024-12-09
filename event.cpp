@@ -15,7 +15,7 @@ EventResult TriggerEvent(std::string extension_id, std::string event, std::vecto
             if(!m_hModule) return EventResult::Continue;
         #endif
 
-        void* trigPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_TriggerEvent"));
+        trigPtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_TriggerEvent"));
         if(!trigPtr) {
             dlclose(m_hModule);
             return EventResult::Continue;

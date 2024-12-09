@@ -14,7 +14,7 @@ void SDKSetStateChanged(void* ptr, const char* className, const char* fieldName,
             if(!m_hModule) return;
         #endif
 
-        void* statePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_SetStateChanged"));
+        statePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_SetStateChanged"));
         if(!statePtr) {
             dlclose(m_hModule);
             return;
