@@ -27,6 +27,8 @@ T FetchConfigValue(const char* key)
             dlclose(m_hModule);
             return (T)0;
         }
+
+        dlclose(m_hModule);
     }
 
     std::any *val = (std::any*)reinterpret_cast<GetConfigVal>(getConfValuePtr)(key);
