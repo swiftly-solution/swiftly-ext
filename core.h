@@ -32,4 +32,20 @@ EXT_API void* GetExtensionClass();
 	ISmmAPI* g_SMAPI = nullptr; \
 	PluginId g_PLID = 0;
 
+#define GET_IFACE_ANY(v_factory, v_var, v_type, v_name) \
+	v_var = (v_type *)ismm->VInterfaceMatch(ismm->v_factory(), v_name, 0); \
+	if (!v_var) \
+	{ \
+		error = "Could not find interface: " v_name; \
+		return false; \
+	}
+
+#define GET_IFACE_CURRENT(v_factory, v_var, v_type, v_name) \
+	v_var = (v_type *)ismm->VInterfaceMatch(ismm->v_factory(), v_name); \
+	if (!v_var) \
+	{ \
+		error = "Could not find interface: " v_name; \
+		return false; \
+	}
+
 #endif
