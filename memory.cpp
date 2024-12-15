@@ -1,4 +1,5 @@
 #include "memory.h"
+#include "files.h"
 
 typedef int (*GetOff)(const char*);
 typedef void* (*GetSig)(const char*);
@@ -13,9 +14,9 @@ int GetOffset(const char* name)
     if(!offsetPtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return -1;
         #endif
 
@@ -36,9 +37,9 @@ void* GetSignature(const char* name)
     if(!sigPtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return nullptr;
         #endif
 
@@ -59,9 +60,9 @@ void* AccessVTable(const char* module, const char* vTableName)
     if(!vtablePtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return nullptr;
         #endif
 

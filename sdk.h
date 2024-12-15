@@ -1,3 +1,4 @@
+#include "files.h"
 #include <metamod_oslink.h>
 
 #ifndef _WIN32
@@ -16,9 +17,9 @@ T SDKGetProp(void* ptr, const char* className, const char* fieldName)
     if(!funcPtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return (T)0;
         #endif
 
@@ -39,9 +40,9 @@ T* SDKGetPropPtr(void* ptr, const char* className, const char* fieldName)
     if(!funcPtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return nullptr;
         #endif
 
@@ -64,9 +65,9 @@ void SDKSetProp(void* ptr, const char* className, const char* fieldName, T value
     if(!funcPtr) {
         HINSTANCE m_hModule;
         #ifdef _WIN32
-            m_hModule = dlmount("addons/swiftly/bin/win64/swiftly.dll");
+            m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
         #else
-            m_hModule = dlopen("addons/swiftly/bin/linuxsteamrt64/swiftly.so", RTLD_NOW);
+            m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
             if(!m_hModule) return;
         #endif
 
