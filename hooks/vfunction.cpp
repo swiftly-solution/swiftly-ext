@@ -2,7 +2,7 @@
 #include "../memory.h"
 #include "../files.h"
 
-typedef void* (*Init_VFunctionHook)(const char*, const char*, const char*, bool, void*, const char*, char);
+typedef void* (*Init_VFunctionHook)(const char*, const char*, const char*, bool, dyno::CallbackHandler, const char*, char);
 typedef void (*Destroy_VFunctionHook)(void*);
 typedef void (*Enable_VFunctionHook)(void*);
 typedef void (*Disable_VFunctionHook)(void*);

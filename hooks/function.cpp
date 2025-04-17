@@ -2,8 +2,8 @@
 #include "../memory.h"
 #include "../files.h"
 
-typedef void* (*Init_FunctionHook)(const char*, bool, void*, const char*, char);
-typedef void* (*Init_FunctionHookPtr)(void*, bool, void*, const char*, char);
+typedef void* (*Init_FunctionHook)(const char*, bool, dyno::CallbackHandler, const char*, char);
+typedef void* (*Init_FunctionHookPtr)(void*, bool, dyno::CallbackHandler, const char*, char);
 typedef void (*Destroy_FunctionHook)(void*);
 typedef void (*Enable_FunctionHook)(void*);
 typedef void (*Disable_FunctionHook)(void*);
