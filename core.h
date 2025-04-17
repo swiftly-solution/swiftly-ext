@@ -7,9 +7,9 @@
 
 #if !defined EXT_API
 #if defined __WIN32__ || defined _WIN32 || defined WIN32
-	#define EXT_API extern "C" __declspec(dllexport)
+#define EXT_API extern "C" __declspec(dllexport)
 #elif defined __GNUC__
-	#define EXT_API extern "C" __attribute__ ((visibility("default")))	
+#define EXT_API extern "C" __attribute__ ((visibility("default")))	
 #endif
 #endif
 
