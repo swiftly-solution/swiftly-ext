@@ -36,7 +36,7 @@ std::string GetCurrentGame()
         m_hModule = dlmount(GeneratePath("addons/swiftly/bin/win64/swiftly.dll"));
 #else
         m_hModule = dlopen(GeneratePath("addons/swiftly/bin/linuxsteamrt64/swiftly.so"), RTLD_NOW);
-        if (!m_hModule) return;
+        if (!m_hModule) "unknown";
 #endif
 
         gamePtr = reinterpret_cast<void*>(dlsym(m_hModule, "swiftly_GetGameName"));
