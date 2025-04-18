@@ -20,7 +20,9 @@ EXT_API void* GetExtensionClass();
 
 #define SAVE_GLOBALVARS() \
 	g_SHPtr = SHPtr;\
-	g_SMAPI = ismm
+	g_SMAPI = ismm; \
+	ConVar_Register(FCVAR_RELEASE | FCVAR_SERVER_CAN_EXECUTE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL, [](ConVarRefAbstract* ref) {}, [](ConCommandRef* ref) {})
+
 
 #define DECLARE_GLOBALVARS() \
 	extern SourceHook::ISourceHook *g_SHPtr; \
