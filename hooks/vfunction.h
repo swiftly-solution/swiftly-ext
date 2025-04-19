@@ -1,5 +1,5 @@
-#ifndef _ext_hooks_function_h
-#define _ext_hooks_function_h
+#ifndef _ext_hooks_vfunction_h
+#define _ext_hooks_vfunction_h
 
 #include <string>
 #include <vector>
