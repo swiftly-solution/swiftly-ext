@@ -8,7 +8,14 @@
 #define WIN_LINUX(win, linux) linux
 #endif
 
+char buf[WIN_LINUX(65535, 8192)];
+
 const char* GeneratePath(const char* path)
 {
-    return (std::string(Plat_GetGameDirectory()) + WIN_LINUX("\\", "/") + "csgo" + WIN_LINUX("\\", "/") + path).c_str();
+    std::string formatted = (std::string(Plat_GetGameDirectory()) + WIN_LINUX("\\", "/") + "csgo" + WIN_LINUX("\\", "/") + path);
+    if(formatted.size() >= WIN_LINUX(65535, 8192)) return "";
+
+    memset(buf, 0, sizeof(buf));
+    memcpy(buf, formatted.c_str(), formatted.size());
+    return (const char*)buf;
 }
