@@ -8,6 +8,6 @@
 #include "eventresult.h"
 #include <metamod_oslink.h>
 
-EventResult TriggerEvent(std::string extension_id, std::string event, std::vector<std::any> args, std::any& eventReturn);
+EventResult TriggerEvent(std::string extension_id, std::string event, std::vector<std::any> args, std::any& eventReturn, std::string specific_plugin = "");
 
 #endif
