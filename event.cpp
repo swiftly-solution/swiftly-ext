@@ -25,5 +25,18 @@ EventResult TriggerEvent(std::string extension_id, std::string event, std::vecto
         dlclose(m_hModule);
     }
 
-    return (EventResult)reinterpret_cast<TrigEvent>(trigPtr)(extension_id.c_str(), event.c_str(), (void*)&args, (void*)&eventReturn, specific_plugin.c_str());
+    if (specific_plugin.size() > 127) return EventResult::Continue;
+    char plugin_name[128];
+    memcpy(plugin_name, specific_plugin.c_str(), specific_plugin.size());
+
+    if (extension_id.size() > 127) return EventResult::Continue;
+    char ext_id[128];
+    memcpy(ext_id, extension_id.c_str(), extension_id.size());
+
+    if (event.size() > 127) return EventResult::Continue;
+    char event_name[128];
+    memcpy(event_name, event.c_str(), event.size());
+
+    EventResult res = reinterpret_cast<TrigEvent>(trigPtr)((const char*)ext_id, (const char*)event_name, (void*)&args, (void*)&eventReturn, (const char*)plugin_name);
+    return res;
 }
