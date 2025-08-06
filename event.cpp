@@ -37,6 +37,6 @@ EventResult TriggerEvent(std::string extension_id, std::string event, std::vecto
     char event_name[128];
     memcpy(event_name, event.c_str(), event.size());
 
-    EventResult res = reinterpret_cast<TrigEvent>(trigPtr)((const char*)ext_id, (const char*)event_name, (void*)&args, (void*)&eventReturn, (const char*)plugin_name);
+    EventResult res = (EventResult)reinterpret_cast<TrigEvent>(trigPtr)((const char*)ext_id, (const char*)event_name, (void*)&args, (void*)&eventReturn, (const char*)plugin_name);
     return res;
 }
