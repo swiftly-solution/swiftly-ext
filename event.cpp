@@ -1,6 +1,8 @@
 #include "event.h"
 #include "files.h"
 
+#include <cstring>
+
 typedef int (*TrigEvent)(const char*, const char*, void*, void*, const char*);
 
 void* trigPtr = nullptr;
@@ -27,15 +29,15 @@ EventResult TriggerEvent(std::string extension_id, std::string event, std::vecto
 
     if (specific_plugin.size() > 127) return EventResult::Continue;
     char plugin_name[128];
-    memcpy(plugin_name, specific_plugin.c_str(), specific_plugin.size());
+    strcpy(plugin_name, specific_plugin.c_str());
 
     if (extension_id.size() > 127) return EventResult::Continue;
     char ext_id[128];
-    memcpy(ext_id, extension_id.c_str(), extension_id.size());
+    strcpy(ext_id, extension_id.c_str());
 
     if (event.size() > 127) return EventResult::Continue;
     char event_name[128];
-    memcpy(event_name, event.c_str(), event.size());
+    strcpy(event_name, event.c_str());
 
     EventResult res = (EventResult)reinterpret_cast<TrigEvent>(trigPtr)((const char*)ext_id, (const char*)event_name, (void*)&args, (void*)&eventReturn, (const char*)plugin_name);
     return res;
