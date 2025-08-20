@@ -20,8 +20,9 @@ EXT_API void* GetExtensionClass();
 
 #define SAVE_GLOBALVARS() \
 	g_SHPtr = SHPtr;\
-	g_SMAPI = ismm; \
-	ConVar_Register(FCVAR_RELEASE | FCVAR_SERVER_CAN_EXECUTE | FCVAR_CLIENT_CAN_EXECUTE | FCVAR_GAMEDLL, [](ConVarRefAbstract* ref) {}, [](ConCommandRef* ref) {})
+	g_SMAPI = ismm;\
+	GET_IFACE_CURRENT(GetEngineFactory, g_pCVar, ICvar, CVAR_INTERFACE_VERSION);\
+    ConVar_Register((1ull << 19) | (1ull << 24) | (1ull << 25) | (1ull << 2), [](ConVarRefAbstract* ref) {}, [](ConCommandRef* ref) {});
 
 
 #define DECLARE_GLOBALVARS() \
